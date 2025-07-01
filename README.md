@@ -342,5 +342,78 @@ o	Type : Dependent Item ou HTTP Agent
 o	Key : cadvisor.raw
 o	URL : http://host.docker.internal:8081/api/v1.3/subcontainers
 o	Type of information : Text
- 
+ 3) Déploiement
+3.1) Gitea
+Gitea est une forge Git auto-hébergée.
+docker-compose-gitea.yml :
+
+version: "3"
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    restart: always
+    ports:
+      - "3000:3000"
+      - "222:22"
+    volumes:
+      - ./gitea:/data
+
+Commande : docker compose -f docker-compose-gitea.yml up -d
+Accès : http://localhost:3000
+3.2) Netdata
+Netdata permet de superviser la charge et les conteneurs en temps réel.
+docker-compose-netdata.yml :
+
+version: "3"
+
+services:
+  netdata:
+    image: netdata/netdata:latest
+    container_name: netdata
+    ports:
+      - "19999:19999"
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - netdataconfig:/etc/netdata
+      - netdatalib:/var/lib/netdata
+      - netdatacache:/var/cache/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+
+volumes:
+  netdataconfig:
+  netdatalib:
+  netdatacache:
+
+Commande : docker compose -f docker-compose-netdata.yml up -d
+Accès : http://localhost:19999
+3.3) whoami
+whoami est un conteneur minimaliste pour tester vos routes réseau.
+docker-compose-whoami.yml :
+
+version: "3"
+
+services:
+  whoami:
+    image: containous/whoami
+    container_name: whoami
+    ports:
+      - "8082:80"
+
+Commande : docker compose -f docker-compose-whoami.yml up -d
+Accès : http://localhost:8082
+4)  Fichiers utiles
+
+- docker-compose-gitea.yml
+- docker-compose-netdata.yml
+- docker-compose-whoami.yml
+
       
