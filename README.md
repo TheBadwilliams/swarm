@@ -1,5 +1,6 @@
 # README - Déploiement de cAdvisor avec Docker Swarm
-Objectif
+Objectif : --> fichier PDF --> [Uploading vrai README_complet.pdf…]()
+
 Déployer l'outil de monitoring cAdvisor dans Docker Swarm pour surveiller l'utilisation des ressources des conteneurs en temps réel.
  Prérequis
 Avant de commencer, assurez-vous que :
