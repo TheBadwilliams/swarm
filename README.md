@@ -1,5 +1,5 @@
 # README -
-Objectif : --> fichier PDF --> [Uploading Readme KWANTWOO Williams rattrapage + exos.pdf…]()
+Objectif : --> fichier PDF --> [Readme KWANTWOO Williams rattrapage + exos.pdf](https://github.com/user-attachments/files/20993677/Readme.KWANTWOO.Williams.rattrapage.%2B.exos.pdf)
 
 
 Déployer l'outil de monitoring cAdvisor dans Docker Swarm pour surveiller l'utilisation des ressources des conteneurs en temps réel.
